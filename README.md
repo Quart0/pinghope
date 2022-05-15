@@ -1,2 +1,9 @@
 # pinghope
-an game on python
+
+--------------
+
+ping pong game
+made in python
+
+-------------
+
