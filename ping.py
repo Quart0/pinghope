@@ -15,6 +15,14 @@ speed_y = 3
 clock = time.Clock()
 FPS = 60
 
+font.init()
+font1 = font.SysFont('Arial',30)
+font2 = font.SysFont('Arial',80)
+
+Chet1 = 0
+Chet2 = 0
+
+
 class GameSprite(sprite.Sprite):
     def __init__(self,player_image,player_x,player_y,player_speed,size_x,size_y):
         super().__init__()
@@ -74,8 +82,29 @@ while game:
             speed_x *= -1
         if ball.rect.y > 500 or ball.rect.y < 0:
             speed_y *= -1
+        
+        if ball.rect.x < 5 :
+            Chet2 = Chet2 + 1
+            ball.rect.x = 300
+            ball.rect.y = 100
+            speed_x = speed_x + 1
+            speed_y = speed_y + 1
+        
+        if ball.rect.x > 700 :
+            Chet1 = Chet1 + 1
+            ball.rect.x = 300
+            ball.rect.y = 100
+            speed_x = speed_x + 1
+            speed_y = speed_x + 1
+        
+
+        vivod = font1.render(str(Chet1) + ":",True , (255,255,255))
+        window.blit(vivod,(0,0))
+        vivod2 = font1.render(str(Chet2),True , (255,255,255))
+        window.blit(vivod2,(20,0))
 
 
 
     display.update()
     clock.tick(FPS)
+
